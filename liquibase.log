@@ -1,0 +1,193 @@
+Mar 15, 2025 2:41:14 PM liquibase.database
+INFO: Error fetching reserved words list from JDBC driver
+java.sql.SQLSyntaxErrorException: Unknown column 'RESERVED' in 'WHERE'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeQuery(StatementImpl.java:1201)
+	at com.mysql.cj.jdbc.DatabaseMetaDataUsingInfoSchema.getSQLKeywords(DatabaseMetaDataUsingInfoSchema.java:1189)
+	at liquibase.database.jvm.JdbcConnection.attached(JdbcConnection.java:57)
+	at liquibase.database.AbstractJdbcDatabase.setConnection(AbstractJdbcDatabase.java:162)
+	at liquibase.database.DatabaseFactory.findCorrectDatabaseImplementation(DatabaseFactory.java:133)
+	at liquibase.Liquibase.<init>(Liquibase.java:104)
+	at com.example.task_board.persistence.migration.MigrationStrategy.executeMigration(MigrationStrategy.java:32)
+	at com.example.task_board.TaskBoardApplication.main(TaskBoardApplication.java:17)
+
+Mar 15, 2025 2:41:15 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202503142214.sql
+Mar 15, 2025 2:41:15 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202503151024.sql
+Mar 15, 2025 2:41:15 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202503151025.sql
+Mar 15, 2025 2:41:15 PM liquibase.changelog
+INFO: Reading resource: db/changelog/migrations/db.changelog-202503151030.sql
+Mar 15, 2025 2:41:15 PM liquibase.changelog
+INFO: Reading from board.DATABASECHANGELOG
+Mar 15, 2025 2:41:15 PM liquibase.lockservice
+INFO: Successfully acquired change log lock
+Mar 15, 2025 2:41:15 PM liquibase.command
+INFO: Using deploymentId: 2060475198
+Mar 15, 2025 2:41:15 PM liquibase.changelog
+INFO: Reading from board.DATABASECHANGELOG
+Running Changeset: db/changelog/migrations/db.changelog-202503142214.sql::202503142214::rafaella
+Mar 15, 2025 2:41:15 PM liquibase.changelog
+SEVERE: ChangeSet db/changelog/migrations/db.changelog-202503142214.sql::202503142214::rafaella encountered an exception.
+liquibase.exception.DatabaseException: Table 'BOARDS' already exists [Failed SQL: (1050) CREATE TABLE BOARDS(
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       name VARCHAR(255) NOT NULL
+) ENGINE=InnoDB]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:497)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:185)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1189)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:776)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:126)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:70)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:131)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:120)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:257)
+	at liquibase.Scope.child(Scope.java:261)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105)
+	at liquibase.command.CommandScope.execute(CommandScope.java:220)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1329)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.Liquibase.update(Liquibase.java:175)
+	at liquibase.Liquibase.update(Liquibase.java:155)
+	at com.example.task_board.persistence.migration.MigrationStrategy.executeMigration(MigrationStrategy.java:36)
+	at com.example.task_board.TaskBoardApplication.main(TaskBoardApplication.java:17)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'BOARDS' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:767)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:652)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:491)
+	... 40 more
+
+
+UPDATE SUMMARY
+Run:                          0
+Previously run:               0
+Filtered out:                 0
+-------------------------------
+Total change sets:            4
+
+Mar 15, 2025 2:41:15 PM liquibase.util
+INFO: UPDATE SUMMARY
+Mar 15, 2025 2:41:15 PM liquibase.util
+INFO: Run:                          0
+Mar 15, 2025 2:41:15 PM liquibase.util
+INFO: Previously run:               0
+Mar 15, 2025 2:41:15 PM liquibase.util
+INFO: Filtered out:                 0
+Mar 15, 2025 2:41:15 PM liquibase.util
+INFO: -------------------------------
+Mar 15, 2025 2:41:15 PM liquibase.util
+INFO: Total change sets:            4
+Mar 15, 2025 2:41:15 PM liquibase.util
+INFO: Update summary generated
+Mar 15, 2025 2:41:15 PM liquibase.command
+INFO: Update command encountered an exception.
+Mar 15, 2025 2:41:15 PM liquibase.lockservice
+INFO: Successfully released change log lock
+Mar 15, 2025 2:41:15 PM liquibase.command
+INFO: Logging exception.
+ERROR: Exception Details
+ERROR: Exception Primary Class:  SQLSyntaxErrorException
+ERROR: Exception Primary Reason:  Table 'BOARDS' already exists
+ERROR: Exception Primary Source:  MySQL 11.7.2-MariaDB
+Mar 15, 2025 2:41:15 PM liquibase.command
+INFO: Command execution complete
+liquibase.exception.CommandExecutionException: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202503142214.sql::202503142214::rafaella:
+     Reason: liquibase.exception.DatabaseException: Table 'BOARDS' already exists [Failed SQL: (1050) CREATE TABLE BOARDS(
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       name VARCHAR(255) NOT NULL
+) ENGINE=InnoDB]
+	at liquibase.command.CommandScope.execute(CommandScope.java:258)
+	at liquibase.Liquibase.lambda$update$0(Liquibase.java:216)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Liquibase.runInScope(Liquibase.java:1329)
+	at liquibase.Liquibase.update(Liquibase.java:205)
+	at liquibase.Liquibase.update(Liquibase.java:188)
+	at liquibase.Liquibase.update(Liquibase.java:175)
+	at liquibase.Liquibase.update(Liquibase.java:155)
+	at com.example.task_board.persistence.migration.MigrationStrategy.executeMigration(MigrationStrategy.java:36)
+	at com.example.task_board.TaskBoardApplication.main(TaskBoardApplication.java:17)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202503142214.sql::202503142214::rafaella:
+     Reason: liquibase.exception.DatabaseException: Table 'BOARDS' already exists [Failed SQL: (1050) CREATE TABLE BOARDS(
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       name VARCHAR(255) NOT NULL
+) ENGINE=InnoDB]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:148)
+	at liquibase.command.core.AbstractUpdateCommandStep.lambda$run$0(AbstractUpdateCommandStep.java:114)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.command.core.AbstractUpdateCommandStep.run(AbstractUpdateCommandStep.java:112)
+	at liquibase.command.core.UpdateCommandStep.run(UpdateCommandStep.java:105)
+	at liquibase.command.CommandScope.execute(CommandScope.java:220)
+	... 12 more
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for changeset db/changelog/migrations/db.changelog-202503142214.sql::202503142214::rafaella:
+     Reason: liquibase.exception.DatabaseException: Table 'BOARDS' already exists [Failed SQL: (1050) CREATE TABLE BOARDS(
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       name VARCHAR(255) NOT NULL
+) ENGINE=InnoDB]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:820)
+	at liquibase.changelog.visitor.UpdateVisitor.executeAcceptedChange(UpdateVisitor.java:126)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:70)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$0(ChangeLogIterator.java:131)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.changelog.ChangeLogIterator.lambda$run$1(ChangeLogIterator.java:120)
+	at liquibase.Scope.lambda$child$0(Scope.java:191)
+	at liquibase.Scope.child(Scope.java:200)
+	at liquibase.Scope.child(Scope.java:190)
+	at liquibase.Scope.child(Scope.java:169)
+	at liquibase.Scope.child(Scope.java:257)
+	at liquibase.Scope.child(Scope.java:261)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:89)
+	... 20 more
+Caused by: liquibase.exception.DatabaseException: Table 'BOARDS' already exists [Failed SQL: (1050) CREATE TABLE BOARDS(
+                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       name VARCHAR(255) NOT NULL
+) ENGINE=InnoDB]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:497)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:185)
+	at liquibase.executor.AbstractExecutor.execute(AbstractExecutor.java:141)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1189)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:776)
+	... 35 more
+Caused by: java.sql.SQLSyntaxErrorException: Table 'BOARDS' already exists
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:121)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:767)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:652)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:491)
+	... 40 more

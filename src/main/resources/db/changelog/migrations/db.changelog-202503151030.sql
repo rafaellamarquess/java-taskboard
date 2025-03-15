@@ -1,5 +1,5 @@
 --liquibase formatted sql
---changeset junior:202503151030
+--changeset rafaella:202503151030
 --comment: blocks table create
 
 CREATE TABLE BLOCKS(
