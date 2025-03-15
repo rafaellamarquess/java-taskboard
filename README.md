@@ -107,9 +107,3 @@ erDiagram
 - **Liquibase**: Ferramenta para controle de versões do banco de dados.
 - **MySQL**: Banco de dados utilizado para armazenar as informações.
 - **Migrations**: Estratégia para migrar e versionar a estrutura do banco de dados.
-
-3. **Execute o projeto**:
-   - Execute o projeto com Maven ou Gradle:
-     ```bash
-     ./mvnw spring-boot:run
-     ```
